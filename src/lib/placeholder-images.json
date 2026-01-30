@@ -1,0 +1,29 @@
+{
+  "placeholderImages": [
+    {
+      "id": "vintage-map",
+      "description": "El novio colocando el anillo de bodas en el dedo de la novia durante la ceremonia.",
+      "imageUrl": "/hero-background.jpeg"
+    },
+    {
+      "id": "couple-1",
+      "description": "Pamela y Felipe en la naturaleza.",
+      "imageUrl": "/couple-story-1.jpeg"
+    },
+    {
+      "id": "couple-2",
+      "description": "Pamela y Felipe abrazados.",
+      "imageUrl": "/couple-story-2.jpeg"
+    },
+    {
+      "id": "couple-3",
+      "description": "Pamela y Felipe en un momento romántico.",
+      "imageUrl": "/couple-story-3.jpeg"
+    },
+    {
+      "id": "church",
+      "description": "Centro Salesiano Santo Domingo Savio",
+      "imageUrl": "/church.jpeg"
+    }
+  ]
+}
