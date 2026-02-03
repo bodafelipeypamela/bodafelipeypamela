@@ -6,10 +6,20 @@ export type ImagePlaceholder = {
   imageUrl: string;
 };
 
+// Fuente de verdad única para el prefijo de las imágenes
 const isProd = process.env.NODE_ENV === 'production';
-const prefix = isProd ? '/bodafelipeypamela' : '';
+export const assetPrefix = isProd ? '/bodafelipeypamela' : '';
 
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages.map(img => ({
   ...img,
-  imageUrl: img.imageUrl.startsWith('/') ? `${prefix}${img.imageUrl}` : img.imageUrl
+  // Forzamos el prefijo solo si la ruta empieza con /
+  imageUrl: (img.imageUrl.startsWith('/') && isProd) 
+    ? `${assetPrefix}${img.imageUrl}` 
+    : img.imageUrl
 }));
+
+// Helper útil para cualquier otra imagen manual
+export function getAssetPath(path: string) {
+  if (!path.startsWith('/')) return path;
+  return isProd ? `${assetPrefix}${path}` : path;
+}
