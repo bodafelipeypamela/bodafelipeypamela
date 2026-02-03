@@ -6,4 +6,10 @@ export type ImagePlaceholder = {
   imageUrl: string;
 };
 
-export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
+const isProd = process.env.NODE_ENV === 'production';
+const prefix = isProd ? '/bodafelipeypamela' : '';
+
+export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages.map(img => ({
+  ...img,
+  imageUrl: img.imageUrl.startsWith('/') ? `${prefix}${img.imageUrl}` : img.imageUrl
+}));
