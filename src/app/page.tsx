@@ -2,15 +2,12 @@
 
 import Image from 'next/image';
 import { Calendar, Clock, MapPin, Gift, Heart } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { PlaceHolderImages, getAssetPath } from '@/lib/placeholder-images';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { RosePetalAnimation } from '@/components/rose-petal-animation';
 import Countdown from '@/components/countdown';
-
-const isProd = process.env.NODE_ENV === 'production';
-const assetPrefix = isProd ? '/bodafelipeypamela' : '';
 
 export default function WanderlustVowsPage() {
   const couple1 = PlaceHolderImages.find(img => img.id === 'couple-1');
@@ -24,7 +21,7 @@ export default function WanderlustVowsPage() {
         <header className="relative flex min-h-screen flex-col items-center justify-center p-4 text-center text-white">
           <div className="absolute inset-0 z-0">
               <Image
-                src={`${assetPrefix}/hero-background.jpeg`}
+                src={getAssetPath('/hero-background.jpeg')}
                 alt="El novio colocando el anillo de bodas en el dedo de la novia durante la ceremonia."
                 fill
                 className="object-cover brightness-50 animate-zoom-in"
@@ -129,7 +126,13 @@ export default function WanderlustVowsPage() {
               ¡Nos encantaría ver la boda desde tus ojos! Escanea el código para compartir tus fotos y momentos favoritos del gran día.
             </p>
             <div className="mt-8 inline-block rounded-lg shadow-xl transition-transform hover:scale-105">
-                 <Image src={`${assetPrefix}/guest-photos-qr.png`} alt="Código QR para compartir fotos" width={220} height={264} className="rounded-lg"/>
+                 <Image 
+                    src={getAssetPath('/guest-photos-qr.png')} 
+                    alt="Código QR para compartir fotos" 
+                    width={220} 
+                    height={264} 
+                    className="rounded-lg"
+                  />
             </div>
           </div>
         </section>
