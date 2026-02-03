@@ -9,6 +9,9 @@ import { Separator } from '@/components/ui/separator';
 import { RosePetalAnimation } from '@/components/rose-petal-animation';
 import Countdown from '@/components/countdown';
 
+const isProd = process.env.NODE_ENV === 'production';
+const assetPrefix = isProd ? '/bodafelipeypamela' : '';
+
 export default function WanderlustVowsPage() {
   const couple1 = PlaceHolderImages.find(img => img.id === 'couple-1');
   const couple2 = PlaceHolderImages.find(img => img.id === 'couple-2');
@@ -21,7 +24,7 @@ export default function WanderlustVowsPage() {
         <header className="relative flex min-h-screen flex-col items-center justify-center p-4 text-center text-white">
           <div className="absolute inset-0 z-0">
               <Image
-                src="/hero-background.jpeg"
+                src={`${assetPrefix}/hero-background.jpeg`}
                 alt="El novio colocando el anillo de bodas en el dedo de la novia durante la ceremonia."
                 fill
                 className="object-cover brightness-50 animate-zoom-in"
@@ -63,7 +66,7 @@ export default function WanderlustVowsPage() {
                 <h2 className="text-center font-headline text-4xl md:text-5xl">Nuestra Historia</h2>
                 <p className="mt-6 text-center text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">Un viaje que comenzó con una chispa y se convirtió en una llama eterna. Cada momento juntos ha sido una aventura, y este es solo el comienzo de nuestro para siempre.</p>
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
-                    {[couple1, couple2, couple3].map((photo, index) => photo && (
+                    {[couple1, couple2, couple3].map((photo) => photo && (
                         <div key={photo.id} className="overflow-hidden rounded-lg shadow-xl transition-transform hover:scale-105 hover:shadow-2xl aspect-[3/4]">
                              <Image src={photo.imageUrl} alt={photo.description} width={600} height={800} className="w-full h-full object-cover" />
                         </div>
@@ -126,7 +129,7 @@ export default function WanderlustVowsPage() {
               ¡Nos encantaría ver la boda desde tus ojos! Escanea el código para compartir tus fotos y momentos favoritos del gran día.
             </p>
             <div className="mt-8 inline-block rounded-lg shadow-xl transition-transform hover:scale-105">
-                 <Image src="/guest-photos-qr.png" alt="Código QR para compartir fotos" width={220} height={264} className="rounded-lg"/>
+                 <Image src={`${assetPrefix}/guest-photos-qr.png`} alt="Código QR para compartir fotos" width={220} height={264} className="rounded-lg"/>
             </div>
           </div>
         </section>
